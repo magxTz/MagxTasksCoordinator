@@ -6,9 +6,11 @@
  * email : alexgabrielmalisa@gmail.com
  * 
  * 
- * simpleTask: In this example, we create 1 task:
- *      1. LED blinker on pin 13  
- *          This task will blink the LED at a frequency of 10Hz (100ms).
+ * AsymmetricBlink: In this example, we create 2 tasks:
+ *      1. LED_ON_TIMER: 
+ *          This task will switch ON LED 
+ *      1. LED_OFF_TIMER: 
+ *          This task will switch OFF LED 
  */
 
 // Create magxTasksCoordinator object
@@ -17,7 +19,9 @@
  *      timeOutMs - This is the time in milliseconds after which the callback will be invoked.
  *  NOTE: This object can receive a few more arguments, but I limit to 1 arg for this example's scope.
 */
-magxTaskCoordinator ledBlinker(60);
+magxTaskCoordinator LED_ON_TIMER(300);
+magxTaskCoordinator LED_OFF_TIMER(1000);
+magxTasksManager manager;
 
 // Then define timerType 
 /**
@@ -27,9 +31,21 @@ magxTaskCoordinator ledBlinker(60);
 */
 
 // Example:
-// ledBlinker.setType(magxTaskCoordinator::Periodic);
-// ledBlinker.setType(magxTaskCoordinator::OneShot);
+// LED_ON_TIMER.setType(magxTaskCoordinator::OneShot);
 
+//Callbacks for both LED_ON_TIMER and LED_OFF_TIMER tasks
+
+void LED_ON_TIMER_CB()
+{
+    digitalWrite(LED_BUILTIN,HIGH);
+    LED_OFF_TIMER.start();
+
+}
+void LED_OFF_TIMER_CB()
+{
+    digitalWrite(LED_BUILTIN,LOW);
+    LED_ON_TIMER.start();
+}
 void setup() {
     // Initialize Serial Monitor
     Serial.begin(9600);
@@ -38,22 +54,22 @@ void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
 
     // Set the callback function for LED blinking task
-    ledBlinker.setCallback(ledBlinkCallback);
+    LED_ON_TIMER.setCallback(LED_ON_TIMER_CB);
+    LED_OFF_TIMER.setCallback(LED_OFF_TIMER_CB);
 
     // Set the timer type (Periodic or OneShot)
-    ledBlinker.setType(magxTaskCoordinator::Periodic);
+    LED_ON_TIMER.setType(magxTaskCoordinator::OneShot);
+    LED_OFF_TIMER.setType(magxTaskCoordinator::OneShot);
+
+    manager.addTimer(&LED_ON_TIMER);
+    manager.addTimer(&LED_OFF_TIMER);
 
     // Start the LED blinking task
-    ledBlinker.start();
+    LED_ON_TIMER.start();
+    
 }
 
 void loop() {
     // Update the task coordinator
-    ledBlinker.update();
-}
-
-// Callback function for LED blinking task
-void ledBlinkCallback() {
-    // Toggle LED state
-    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+    manager.updateTimers();
 }
