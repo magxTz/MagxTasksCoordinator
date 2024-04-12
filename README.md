@@ -1,4 +1,3 @@
-```markdown
 # magxTasksCoordinator Library
 
 ## Overview
