@@ -6,7 +6,7 @@
  * email : alexgabrielmalisa@gmail.com
  * 
  * 
- * simpleTask: In this task, we create two tasks:
+ * simpleTask: In this example, we create 1 task:
  *      1. LED blinker on pin 13  
  *          This task will blink the LED at a frequency of 10Hz (100ms).
  */
