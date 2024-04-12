@@ -1,0 +1,15 @@
+magxTaskCoordinator	KEYWORD1
+magxTaskCoordinator	TYPE_DEFINITION
+magxTaskCoordinator	start	KEYWORD2
+magxTaskCoordinator	stop	KEYWORD2
+magxTaskCoordinator	reset	KEYWORD2
+magxTaskCoordinator	update	KEYWORD2
+magxTaskCoordinator	setCallback	KEYWORD2
+magxTaskCoordinator	setRepeatTimeoutCallback	KEYWORD2
+magxTaskCoordinator	setType	KEYWORD2
+magxTaskCoordinator	isRunning	KEYWORD2
+magxTaskCoordinator	triggerCallback	KEYWORD2
+magxTasksManager	KEYWORD1
+magxTasksManager	TYPE_DEFINITION
+magxTasksManager	addTimer	KEYWORD2
+magxTasksManager	updateTimers	KEYWORD2
