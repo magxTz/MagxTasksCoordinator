@@ -1,3 +1,4 @@
+```markdown
 # magxTasksCoordinator Library
 
 ## Overview
@@ -26,3 +27,56 @@ To create a task, instantiate an object of the `magxTaskCoordinator` class with 
 
 ```cpp
 magxTaskCoordinator task(timeoutMs);
+```
+
+You can optionally specify the number of repetitions and stoppage interval for periodic tasks.
+
+### Setting Callbacks
+
+Set callback functions to be executed when the task timeout occurs:
+
+```cpp
+task.setCallback(callbackFunction);
+```
+
+### Starting and Stopping Tasks
+
+Start and stop tasks as needed:
+
+```cpp
+task.start();  // Start the task
+task.stop();   // Stop the task
+```
+
+### Updating Tasks
+
+Call the `update()` method periodically in your main loop to check for task timeouts:
+
+```cpp
+void loop() {
+    // Update tasks
+    task.update();
+}
+```
+
+### Adding Tasks to Manager
+
+Tasks can be managed by a `magxTasksManager` object. Add tasks to the manager for centralized control:
+
+```cpp
+magxTasksManager manager;
+manager.addTimer(&task);
+```
+
+## Examples
+
+Check out the `examples` folder for usage examples and demonstrations of the library features.
+
+## License
+
+This library is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request on GitHub.
+```
