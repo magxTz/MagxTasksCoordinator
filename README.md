@@ -14,7 +14,7 @@ The `magxTasksCoordinator` library provides a simple and flexible way to manage 
 
 ## Installation
 
-1. Download the `magxTasksCoordinator` library ZIP file from the [GitHub repository](https://github.com/your-username/magxTasksCoordinator).
+1. Download the `magxTasksCoordinator` library ZIP file from the [GitHub repository](https://github.com/magxTz/magxTasksCoordinator).
 2. In the Arduino IDE, go to `Sketch > Include Library > Add .ZIP Library...` and select the downloaded ZIP file.
 3. The library will be installed and ready to use in your Arduino sketches.
 
