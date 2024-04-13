@@ -54,7 +54,7 @@ void magxTaskCoordinator::update() {
     if (elapsedTime >= (timeoutMs + dynamicDelayMs)) {
         timeoutCallback();
 
-        if (repeatCount > 1 && stoppageMs >= 500) {
+        if (repeatCount > 1 && stoppageMs >= 1) {
             if (count >= repeatCount) {
                 dynamicDelayMs = stoppageMs;
                 count = 0;
